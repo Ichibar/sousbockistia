@@ -50,9 +50,26 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('CocktailsDetailsCtrl', function($scope, $stateParams, Cocktails) {
+.controller('CocktailsDetailsCtrl', function($scope, $stateParams, Cocktails, $ionicPopup) {
   $scope.cocktail = Cocktails.get($stateParams.id);
   $scope.image = (Cocktails.get($stateParams.id).images[0].path).replace(/full/g, 'img/full');
+  $scope.fav = function() {
+    Cocktails.save($stateParams.id);
+    // An alert dialog
+    if ($scope.cocktail.favoris === 0)
+    {
+      var alertPopup = $ionicPopup.alert({
+      title: 'Oh non...',
+      template: 'Vous avez retiré un cocktail de vos favoris'
+      });
+    }
+    else { 
+      var alertPopup = $ionicPopup.alert({
+      title: 'Bravo !',
+      template: 'Vous avez ajouté un cocktail à vos favoris'
+      });
+    }
+   }
 })
 
 .controller('FavouriteCtrl', function($scope, Cocktails) {

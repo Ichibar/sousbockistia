@@ -51,6 +51,19 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    save: function(cocktailId) {
+      for(var i = 0; i < localCocktails.length; i++) {
+          if (localCocktails[i].idCocktail === parseInt(cocktailId)) {
+            if (localCocktails[i].favoris === 1) {
+              localCocktails[i].favoris = 0;
+            }
+            else {
+              localCocktails[i].favoris = 1; 
+            }
+            $localstorage.setObject('cocktails', localCocktails);
+          }
+      }
     }
   };
 })

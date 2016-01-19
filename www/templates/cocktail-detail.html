@@ -1,6 +1,11 @@
 <ion-view view-title="{{cocktail.nom}}">
+
+
   <ion-content class="padding">
+
     <img ng-src="{{image}}">
+
+
     <div class="list">
 		<div class="item item-divider">
 			Présentation
@@ -8,6 +13,8 @@
 		<p ng-bind-html="cocktail.preparation | newlines">
 			
 		</p>
+
+
 		<div class="item item-divider">
 			Ingrédients
 		</div>
@@ -15,10 +22,16 @@
 			{{ingredient.nom}}, dosage : {{ingredient.dosage}}
 		</p>
 	</div>
+
   </ion-content>
+
   <ion-footer-bar class="bar bar-footer">
-  		<a class="button button-full button-positive icon-left ion-wand animated bounceInLeft" href="">
-	      Préparer
-	    </a>
+  		
+	    <ion-footer-bar class="bar bar-footer">
+  		<div class="button-bar">
+  		 <a class="button button-positive icon-left ion-wand animated bounceInLeft" href="">Préparer</a>
+		 <button class="button ion-ios-star button-positive icon-left animated bounceInRight" ng-click="fav()" >Mettre en favoris</button>
+		</div>
 	</ion-footer-bar>
-</ion-view>
+	</ion-footer-bar>
+</ion-view> 
